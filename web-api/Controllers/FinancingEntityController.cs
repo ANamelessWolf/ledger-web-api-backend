@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Nameless.Ledger.BI.Repositories.Implements;
 using Nameless.Ledger.Models;
 using Nameless.Ledger.ModelsDto;
 using Nameless.WebApi.Controllers;
+using System.Net;
 
 namespace Nameless.LedgerWebApi.Controllers
 {
@@ -16,5 +18,6 @@ namespace Nameless.LedgerWebApi.Controllers
             base(repository, mapper)
         {
         }
+
     }
 }

@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using static Nameless.WebApi.Utils.ControllerUtils;
+using Microsoft.AspNetCore.Cors;
 
 namespace Nameless.WebApi.Controllers
 {

@@ -7,7 +7,7 @@ namespace Nameless.LedgerWebApi.Installers
     {
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers();
+            
             services.AddSwaggerGen(config =>
             {
                 config.SwaggerDoc("v1", new OpenApiInfo
@@ -27,6 +27,7 @@ namespace Nameless.LedgerWebApi.Installers
                 config.IncludeXmlComments(xmlPath);
                 */
             });
+            services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }

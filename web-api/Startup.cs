@@ -9,21 +9,21 @@ using Nameless.Ledger.BI.Repositories.Implements;
 namespace Nameless.LedgerWebApi
 {
     public class Startup
+    {
+        public IConfiguration Configuration { get; }
+
+        public readonly string MyAllowSpecificOrigins;
+
+        public Startup(IConfiguration configuration)
         {
-            public Startup(IConfiguration configuration)
-            {
-                Configuration = configuration;
-            }
+            Configuration = configuration;
+            MyAllowSpecificOrigins = Configuration.GetSection("AllowedHosts").Value;
+        }
 
-            public IConfiguration Configuration { get; }
-
-            public readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             /*
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer", opt =>
@@ -49,12 +49,15 @@ namespace Nameless.LedgerWebApi
 
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  builder =>
-                                  {
-                                      builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                                  });
+                options.AddPolicy(name: "AllowOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins(MyAllowSpecificOrigins)
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                    });
             });
+
 
             services.InstallServicesInAssembly(Configuration);
 
@@ -75,39 +78,34 @@ namespace Nameless.LedgerWebApi
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
             {
-                if (env.IsDevelopment())
-                {
-                    app.UseDeveloperExceptionPage();
-                }
+                app.UseDeveloperExceptionPage();
+            }
 
-                app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-                app.UseRouting();
-
-
-                app.UseAuthorization();
-
-                app.UseCors(MyAllowSpecificOrigins);
-
-                //          app.UseAuthentication();
-
-                app.UseEndpoints(endpoints =>
+            app.UseRouting();
+            app.UseCors("AllowOrigin");
+            app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers()
                   //  .RequireAuthorization("ApiScope")
                   ;
                 });
+            app.UseAuthentication();
+            //app.UseAuthorization();
 
-                app.UseSwagger();
-                app.UseSwaggerUI(config =>
-                {
-                    config.DocumentTitle = "Nameless - Manga Library Web API";
-                    config.InjectJavascript("/swagger-ui/custom.js");
-                    config.InjectStylesheet("/swagger-ui/custom.css");
-                    config.SwaggerEndpoint("/swagger/v1/swagger.json", "NamelessMangaLibraryAPI");
-                });
+            app.UseSwagger();
+            app.UseSwaggerUI(config =>
+            {
+                config.DocumentTitle = "Nameless - Manga Library Web API";
+                config.InjectJavascript("/swagger-ui/custom.js");
+                config.InjectStylesheet("/swagger-ui/custom.css");
+                config.SwaggerEndpoint("/swagger/v1/swagger.json", "NamelessMangaLibraryAPI");
+            });
 
-            }
         }
     }
+}
