@@ -5,12 +5,12 @@ using Nameless.WebApi.Repositories;
 
 namespace Nameless.Ledger.BI.Repositories.Implements
 {
-    public class TestRepository :
-        GenericRepository<TestModel>, ITestRepository, IContextAccesible
+    public class FinancingEntityRepository :
+        GenericRepository<FinancingEntity>, IFinancingEntityRepository, IContextAccesible
     {
         NamelessBIContext IContextAccesible.Context => (NamelessBIContext)this._context;
 
-        public TestRepository(NamelessBIContext context) 
+        public FinancingEntityRepository(NamelessBIContext context) 
             : base(context)
         {
             

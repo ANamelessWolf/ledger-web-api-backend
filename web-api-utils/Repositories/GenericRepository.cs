@@ -2,8 +2,9 @@
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
 using Nameless.WebApi.Models;
+using System.Reflection;
 using System.Text.RegularExpressions;
-
+using static Nameless.WebApi.Utils.ControllerUtils;
 namespace Nameless.WebApi.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
@@ -35,10 +36,20 @@ namespace Nameless.WebApi.Repositories
 
         public async Task<T> GetById(int id)
         {
-            var entity = await _context.Set<T>().FindAsync(id);
-            if (this.DataIsSelected != null)
-                this.DataIsSelected(entity);
-            return entity;
+            try
+            {
+                var entity = await _context.Set<T>().FindAsync(id);
+                if (this.DataIsSelected != null)
+                    this.DataIsSelected(entity);
+                return entity;
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e);
+                throw e;
+            }
+
         }
 
         public async Task<T> Insert(T entity)
@@ -52,10 +63,10 @@ namespace Nameless.WebApi.Repositories
             return entity;
         }
 
+
+
         public async Task<T> Update(T entity)
         {
-            if (entity == null)
-                throw new Exception("The entity is null");
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;

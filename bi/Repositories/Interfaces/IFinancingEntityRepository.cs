@@ -3,7 +3,7 @@ using Nameless.WebApi.Repositories;
 
 namespace Nameless.Ledger.BI.Repositories.Interfaces
 {
-    public interface ITestRepository : IGenericRepository<TestModel>
+    public interface IFinancingEntityRepository : IGenericRepository<FinancingEntity>
     {
     }
 }

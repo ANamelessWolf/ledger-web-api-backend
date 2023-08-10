@@ -141,7 +141,8 @@ namespace Nameless.WebApi.Controllers
         /// <returns>The list of mapped selected objects</returns>
         protected virtual OkObjectResult Map(T result)
         {
-            return Ok(_mapper.Map<D>(result));
+            var mapped = _mapper.Map<D>(result);
+            return Ok(mapped);
         }
 
         /// <summary>

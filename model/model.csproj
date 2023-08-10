@@ -11,4 +11,19 @@
     <ProjectReference Include="..\web-api-utils\web-api-utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Headers.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Headers.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Headers.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Headers.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

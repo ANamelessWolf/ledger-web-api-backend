@@ -64,9 +64,9 @@ namespace Nameless.LedgerWebApi
             // repositories
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(DbContext), typeof(NamelessBIContext));
-            
-            //Catalogues
 
+            //Catalogues
+            services.AddScoped(typeof(FinancingEntityRepository), typeof(FinancingEntityRepository));
             //Tables
 
             //Views
