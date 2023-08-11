@@ -100,10 +100,10 @@ namespace Nameless.LedgerWebApi
             app.UseSwagger();
             app.UseSwaggerUI(config =>
             {
-                config.DocumentTitle = "Nameless - Manga Library Web API";
+                config.DocumentTitle = "Nameless - Ledger API";
                 config.InjectJavascript("/swagger-ui/custom.js");
                 config.InjectStylesheet("/swagger-ui/custom.css");
-                config.SwaggerEndpoint("/swagger/v1/swagger.json", "NamelessMangaLibraryAPI");
+                config.SwaggerEndpoint("/swagger/v1/swagger.json", "NamelessLedgerAPI");
             });
 
         }

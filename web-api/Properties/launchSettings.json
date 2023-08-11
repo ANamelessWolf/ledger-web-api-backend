@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "manga_web_api": {
+    "ledger_web_api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
