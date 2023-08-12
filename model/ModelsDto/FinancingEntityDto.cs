@@ -12,5 +12,6 @@ namespace Nameless.Ledger.ModelsDto
         public string? Description { get; set; }
         public string? Name { get; set; }
         public string? FinancingType { get; set; }
+        public int? FinancingTypeId { get; set; }
     }
 }

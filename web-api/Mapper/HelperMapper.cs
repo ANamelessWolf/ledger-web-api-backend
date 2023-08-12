@@ -13,6 +13,7 @@ namespace Nameless.WebApi.Mapper
             CreateMap<FinancingEntity, FinancingEntityDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.FinancingType, opt => opt.MapFrom(src => src.FinancingType.GetHeader()))
+                .ForMember(dest => dest.FinancingTypeId, opt => opt.MapFrom(src => src.FinancingType))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => Clean(src.Name)))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => Clean(src.Description)));
             CreateMap<FinancingEntityDto, FinancingEntity>()
