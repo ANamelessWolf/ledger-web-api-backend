@@ -45,8 +45,41 @@ namespace Nameless.Ledger.Utils
             return header;
         }
 
+        public static string GetHeader(this CardType tp)
+        {
+            string header;
+            switch (tp)
+            {
+                case CardType.AMEX:
+                    header = Headers.AMEX;
+                    break;
+                case CardType.MASTER_CARD:
+                    header = Headers.MASTER_CARD;
+                    break;
+                case CardType.VISA:
+                    header = Headers.VISA;
+                    break;
+                default:
+                    header = Headers.NOT_ESPECIFIED;
+                    break;
+            }
+            return header;
+        }
 
 
+
+        public static CardType GetCardType(this string header)
+        {
+            CardType tp;
+            tp = CardType.OTHER;
+            if (header == Headers.AMEX)
+                tp = CardType.AMEX;
+            if (header == Headers.MASTER_CARD)
+                tp = CardType.MASTER_CARD;
+            if (header == Headers.VISA)
+                tp = CardType.VISA;
+            return tp;
+        }
         public static FinancingEntityType GetFinancingEntityType(this string header)
         {
             FinancingEntityType tp;

@@ -23,6 +23,7 @@ namespace Nameless.WebApi.Repositories
             if (entity == null)
                 throw new Exception("The entity is null");
             _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll()

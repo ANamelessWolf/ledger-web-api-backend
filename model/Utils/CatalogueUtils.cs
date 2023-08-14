@@ -31,5 +31,27 @@ namespace Nameless.Ledger.Utils
                 return result.Where(x => !ignore.Contains((FinancingEntityType)x.Id)).ToArray();
             return result.ToArray();
         }
+
+        public static CatalogueItem[] GetCardTypeCatalogue
+            (params CardType[] ignore)
+        {
+            var items = Enum.GetValues(typeof(CardType));
+            var result = new List<CatalogueItem>();
+            foreach (var item in items)
+            {
+                if (item != null)
+                {
+                    var enuM = (FinancingEntityType)item;
+                    result.Add(new CatalogueItem()
+                    {
+                        Id = (int)enuM,
+                        Description = enuM.GetHeader()
+                    });
+                }
+            }
+            if (ignore != null && ignore.Length > 0)
+                return result.Where(x => !ignore.Contains((CardType)x.Id)).ToArray();
+            return result.ToArray();
+        }
     }
 }

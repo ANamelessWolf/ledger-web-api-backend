@@ -31,6 +31,7 @@ namespace Nameless.Ledger.BI
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
             //Catalogos
             modelBuilder.CreateFinancingEntityContext();
+            modelBuilder.CreateCreditCardContext();
             //Tablas
             //Views
             base.OnModelCreating(modelBuilder);

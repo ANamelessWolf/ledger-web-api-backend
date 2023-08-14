@@ -70,6 +70,7 @@ namespace Nameless.LedgerWebApi
 
             //Catalogues
             services.AddScoped(typeof(FinancingEntityRepository), typeof(FinancingEntityRepository));
+            services.AddScoped(typeof(CreditCardRepository), typeof(CreditCardRepository));
             //Tables
 
             //Views

@@ -11,5 +11,8 @@ namespace Nameless.Ledger.Models
     public class AppCatalogues
     {
         public CatalogueItem[] FinancingEntityType { get; set; }
+        public CatalogueItem[] FinancingEntity { get; set; }
+        public CatalogueItem[] CardType { get; set; }
+        public CatalogueItem[] CreditCard { get; set; }
     }
 }
