@@ -29,8 +29,8 @@ namespace Nameless.LedgerWebApi.Controllers
             appCatalogues.CardType = CatalogueUtils.GetCardTypeCatalogue();
             var fiEnCat = await this.FinanEntRepo.GetAll();
             appCatalogues.FinancingEntity = fiEnCat.Select(x => new CatalogueItem() { Id = x.Id, Description = x.Name ?? "" }).ToArray();
-            //var cCardCat = await this.CCardRepo.GetAll();
-            //appCatalogues.CreditCard = cCardCat.Select(x => new CatalogueItem() { Id = x.Id, Description = x.ShortName ?? "" }).ToArray();
+            var cCardCat = await this.CCardRepo.GetAll();
+            appCatalogues.CreditCard = cCardCat.Select(x => new CatalogueItem() { Id = x.Id, Description = x.ShortName ?? "" }).ToArray();
             return Ok(appCatalogues);
         }
     }

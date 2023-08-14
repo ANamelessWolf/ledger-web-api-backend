@@ -41,7 +41,7 @@ namespace Nameless.Ledger.Utils
             {
                 if (item != null)
                 {
-                    var enuM = (FinancingEntityType)item;
+                    var enuM = (CardType)item;
                     result.Add(new CatalogueItem()
                     {
                         Id = (int)enuM,
