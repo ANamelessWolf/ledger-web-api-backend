@@ -24,7 +24,7 @@ namespace Nameless.WebApi.Mapper
                 .ForMember(dest => dest.FinancingType, opt => opt.MapFrom(src => (FinancingEntityType)src.FinancingType))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
-
+            #region Credit Card
             CreateMap<CreditCard, CreditCardDto>()
                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                .ForMember(dest => dest.FinancingEntityId, opt => opt.MapFrom(src => src.FinancingEntityId))
@@ -75,6 +75,38 @@ namespace Nameless.WebApi.Mapper
                 .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color))
                 .ForMember(dest => dest.EndingCardNumber, opt => opt.MapFrom(src => src.EndingCardNumber))
                 ;
+            #endregion
+
+            CreateMap<Vendor, VendorDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => Clean(src.Name)));
+            CreateMap<VendorDto, Vendor>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+            CreateMap<NewVendorDto, Vendor>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<Category, CategoryDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => Clean(src.Name)));
+            CreateMap<CategoryDto, Category>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+            CreateMap<NewCategoryDto, Category>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<SubCategory, SubCategoryDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => Clean(src.Name)));
+            CreateMap<SubCategoryDto, SubCategory>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+            CreateMap<NewSubCategoryDto, SubCategory>()
+                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
 
         }
 

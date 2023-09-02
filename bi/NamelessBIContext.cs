@@ -32,6 +32,9 @@ namespace Nameless.Ledger.BI
             //Catalogos
             modelBuilder.CreateFinancingEntityContext();
             modelBuilder.CreateCreditCardContext();
+            modelBuilder.CreateVendor();
+            modelBuilder.CreateCategory();
+            modelBuilder.CreateSubCategory();
             //Tablas
             //Views
             base.OnModelCreating(modelBuilder);

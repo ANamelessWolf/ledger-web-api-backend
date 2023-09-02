@@ -61,7 +61,7 @@ namespace Nameless.Ledger {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amex.
+        ///   Looks up a localized string similar to AMEX.
         /// </summary>
         internal static string AMEX {
             get {
@@ -124,7 +124,7 @@ namespace Nameless.Ledger {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Master card.
+        ///   Looks up a localized string similar to MASTERCARD.
         /// </summary>
         internal static string MASTER_CARD {
             get {
@@ -138,6 +138,15 @@ namespace Nameless.Ledger {
         internal static string NOT_ESPECIFIED {
             get {
                 return ResourceManager.GetString("NOT_ESPECIFIED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OTHER.
+        /// </summary>
+        internal static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
             }
         }
         
@@ -160,7 +169,7 @@ namespace Nameless.Ledger {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visa.
+        ///   Looks up a localized string similar to VISA.
         /// </summary>
         internal static string VISA {
             get {

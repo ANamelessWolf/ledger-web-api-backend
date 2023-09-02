@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AMEX" xml:space="preserve">
-    <value>Amex</value>
+    <value>AMEX</value>
   </data>
   <data name="BROKERAGE_FIRMS" xml:space="preserve">
     <value>Brokers</value>
@@ -139,10 +139,13 @@
     <value>Prestamos</value>
   </data>
   <data name="MASTER_CARD" xml:space="preserve">
-    <value>Master card</value>
+    <value>MASTERCARD</value>
   </data>
   <data name="NOT_ESPECIFIED" xml:space="preserve">
     <value>No especificado</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>OTHER</value>
   </data>
   <data name="RETAIL_BANKS" xml:space="preserve">
     <value>Banco de tienda departamental</value>
@@ -151,6 +154,6 @@
     <value>Ahorros</value>
   </data>
   <data name="VISA" xml:space="preserve">
-    <value>Visa</value>
+    <value>VISA</value>
   </data>
 </root>

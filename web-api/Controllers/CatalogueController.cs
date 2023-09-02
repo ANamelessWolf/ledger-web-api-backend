@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Nameless.Ledger.BI.Repositories.Implements;
 using Nameless.Ledger.Models;
+using Nameless.Ledger.ModelTypes;
 using Nameless.Ledger.Utils;
 using Nameless.WebApi.Models;
 

@@ -13,6 +13,9 @@ namespace Nameless.Ledger.BI.Context
     {
         public const string FINANCING_ENTITY_NAME = "entidadcrediticia";
         public const string CREDIT_CARD_NAME = "tarjetacredito";
+        public const string VENDOR_NAME = "vendor";
+        public const string CATEGORY_NAME = "category";
+        public const string SUB_CATEGORY_NAME = "subcategory";
 
         public static void CreateFinancingEntityContext(this ModelBuilder modelBuilder)
         {
@@ -71,5 +74,42 @@ namespace Nameless.Ledger.BI.Context
                     .HasColumnName("color");
             });
         }
+
+        public static void CreateVendor(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Vendor>(entity =>
+            {
+                entity.ToTable(VENDOR_NAME);
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name)
+                    .HasColumnName("vendorDescription");
+            });
+        }
+
+        public static void CreateCategory(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.ToTable(CATEGORY_NAME);
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name)
+                    .HasColumnName("categoria");
+            });
+        }
+
+        public static void CreateSubCategory(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SubCategory>(entity =>
+            {
+                entity.ToTable(SUB_CATEGORY_NAME);
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.CategoryId)
+                    .IsRequired()
+                    .HasColumnName("idCategory");
+                entity.Property(e => e.Name)
+                    .HasColumnName("subCategoria");
+            });
+        }
+
     }
 }

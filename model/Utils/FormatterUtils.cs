@@ -59,6 +59,9 @@ namespace Nameless.Ledger.Utils
                 case CardType.VISA:
                     header = Headers.VISA;
                     break;
+                case CardType.OTHER:
+                    header = Headers.Other;
+                    break;
                 default:
                     header = Headers.NOT_ESPECIFIED;
                     break;
