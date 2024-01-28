@@ -5,13 +5,13 @@ using Nameless.WebApi.Repositories;
 
 namespace Nameless.Ledger.BI.Repositories.Implements
 {
-    public class CreditCardRepository :
-        GenericRepository<CreditCard>, ICreditCardRepositoryRepository, IContextAccesible
+    public class CreditCardOverviewRepository :
+        GenericRepository<CreditCardOverview>, ICreditCardOverviewRepository, IContextAccesible
     {
         NamelessBIContext IContextAccesible.Context => (NamelessBIContext)this._context;
 
 
-        public CreditCardRepository(NamelessBIContext context) 
+        public CreditCardOverviewRepository(NamelessBIContext context) 
             : base(context)
         {
             

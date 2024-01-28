@@ -14,5 +14,8 @@ namespace Nameless.Ledger.Models
         public CatalogueItem[] FinancingEntity { get; set; }
         public CatalogueItem[] CardType { get; set; }
         public CatalogueItem[] CreditCard { get; set; }
+        public CatalogueItem[] Category { get; set; }
+        public CatalogueItem[] SubCategory { get; set; }
+        public CatalogueItem[] Vendor { get; set; }
     }
 }
